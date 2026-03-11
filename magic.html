@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Memories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+font-family:Segoe UI;
+color:white;
+}
+
+/* title */
+
+.title{
+font-size:35px;
+text-align:center;
+letter-spacing:2px;
+margin-bottom:20px;
+z-index:2;
+}
+
+/* slideshow */
+
+.slideshow{
+position:relative;
+width:80%;
+max-width:700px;
+height:450px;
+}
+
+/* images */
+
+.slideshow img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:contain;
+opacity:0;
+transition:opacity 1.2s ease-in-out, transform 3s linear;
+transform:scale(1);
+border-radius:10px;
+}
+
+.slideshow img.active{
+opacity:1;
+transform:scale(1.05);
+}
+
+/* start button */
+
+.start-btn{
+margin-top:30px;
+background:#ff4081;
+border:none;
+padding:15px 35px;
+border-radius:40px;
+font-size:18px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.start-btn:hover{
+background:#e73370;
+transform:scale(1.05);
+}
+
+/* floating hearts */
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall linear forwards;
+opacity:0.8;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="title">✨ Your Beautiful Memories ✨</div>
+
+<audio id="music" src="song.mp4"></audio>
+
+<div class="slideshow">
+
+<!-- CHANGE PHOTO NAMES HERE -->
+
+<img src="crackers.jpeg" class="active">
+<img src="appa.jpeg">
+<img src="amma.jpeg">
+<img src="kalai.jpeg">
+<img src="dp.jpeg">
+<img src="me.jpeg">
+<img src="engage.jpeg" alt="">
+<img src="nill.jpeg" alt="">
+    <img src="beach.jpeg" alt="">
+<img src="mama.jpeg">
+<img src="temp.jpeg">
+<img src="umbre.jpeg">
+<img src="aa pic.jpeg">
+<img src="theatre.jpeg">
+<img src="sit.jpeg">
+<img src="st.jpeg">
+<img src="ez.jpeg">
+<img src="beach5.jpeg">
+<img src="all.jpeg">
+<img src="3.jpeg">
+<img src="all2.jpeg">
+<img src="fn.jpeg">
+<img src="solo.jpeg">
+<img src="eaa.jpeg" alt="">
+<img src="nich.jpeg" alt="">
+<img src="4ofus.jpeg" alt="">
+<img src="all3.jpeg" alt="">
+<img src="eg.jpeg" alt="">
+<img src="kov.jpeg" alt="">
+<img src="heart.jpeg" alt="">
+<img src="kARTHI.jpeg" alt="">
+<img src="amee.jpeg" alt="">
+<img src="she.jpeg" alt="">
+<img src="kalai2.jpeg" alt="">
+<img src="out.jpeg" alt="">
+<img src="meee.jpeg" alt="">
+<img src="pon.jpeg" alt="">
+<img src="toooor.jpeg" alt="">
+<img src="them.jpeg">
+<img src="fam.jpeg" alt="">
+
+
+</div>
+
+<button class="start-btn" onclick="startMagic()">Start Magic 💖</button>
+
+<script>
+
+/* slideshow */
+
+let index = 0;
+let images = document.querySelectorAll(".slideshow img");
+
+function startMagic(){
+
+document.getElementById("music").play();
+
+setInterval(function(){
+
+images[index].classList.remove("active");
+
+index = (index + 1) % images.length;
+
+images[index].classList.add("active");
+
+},2500);
+
+}
+
+/* floating hearts */
+
+function createHeart(){
+
+const heart = document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="💖";
+
+heart.style.left = Math.random()*100 + "vw";
+
+heart.style.fontSize = (Math.random()*20+15)+"px";
+
+heart.style.animationDuration = (Math.random()*3+3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
